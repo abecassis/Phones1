@@ -1,0 +1,47 @@
+<html>
+        <head>
+
+
+            </head>
+
+
+                <body>
+                    <button onclick = "ajax_get()">  show phones </button>
+                      
+                      <script>
+
+                        function ajax_get(){
+                              var xhttp = new XMLHttpRequest();
+                                 xhttp.onreadystatechange = function() {
+                                      if (this.readyState == 4 && this.status == 200) {
+                                         var make_nice = xhttp.responseText;
+                                         console.log(make_nice);
+                                         make_nice =  JSON.parse(make_nice);
+                                           console.log(make_nice);
+                                       for(i=0; i <= make_nice.length; i++){
+                                            document.getElementById("demo").innerHTML += "<tr><td>" +"id.phone:"+ + make_nice[i].id_phone +
+                                             "</td></tr>" +  "<tr><td>"+"model:"+ make_nice[i].model + "</td></tr>";
+                                       }
+                                         
+
+
+                                       }
+                                         };
+
+                                        xhttp.open("GET", "api.php", true);
+                                        xhttp.send();
+                                        
+                                 }
+
+                                 
+                        
+                      </script>
+
+                     <table id="demo">
+
+
+                     </table>
+
+
+                </body>
+</html>
